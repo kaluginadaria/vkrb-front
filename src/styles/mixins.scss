@@ -1,0 +1,91 @@
+$transition-normal: .2s ease-out;
+$transition-slow: .5s ease-out;
+
+
+@mixin width($max-width) {
+  @media only screen and (max-width: $max-width) {
+    @content
+  }
+}
+
+@mixin height($max-height) {
+  @media only screen and (max-height: $max-height) {
+    @content
+  }
+}
+
+@mixin mobile(){
+  :global(.__IS_MOBILE__) & {
+    @content
+  }
+}
+
+@mixin desktop(){
+  :global(.__IS_DESKTOP__) & {
+    @content
+  }
+}
+
+@mixin hover(){
+  @include desktop {
+    &:hover {
+      @content
+    }
+  }
+}
+
+@mixin active(){
+  @include desktop {
+    &:active {
+      @content
+    }
+  }
+}
+
+@mixin selectable(){
+  user-select: text;
+}
+
+
+@mixin unSelectable(){
+  user-select: none;
+}
+
+
+@mixin animate($property...){
+  $animatedProperty: #{''};
+  @if length($property) > 1 {
+    @for $i from 1 through length($property)-1  {
+      $animatedProperty: $animatedProperty nth($property, $i) $transition-normal #{', '}
+    }
+  }
+  transition: $animatedProperty nth($property, length($property)) $transition-normal;
+}
+
+@mixin animateSlow($property...){
+  $animatedProperty: #{''};
+  @if length($property) > 1 {
+    @for $i from 1 through length($property)-1  {
+      $animatedProperty: $animatedProperty nth($property, $i) $transition-slow #{', '}
+    }
+  }
+  transition: $animatedProperty nth($property, length($property)) $transition-slow;
+}
+
+
+@mixin forceAnimate($property...){
+  $animatedProperty: #{''};
+  @if length($property) > 1 {
+    @for $i from 1 through length($property)-1  {
+      $animatedProperty: $animatedProperty nth($property, $i) #{', '}
+    }
+  }
+  will-change: $animatedProperty nth($property, length($property));
+}
+
+
+@mixin autoCropText(){
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

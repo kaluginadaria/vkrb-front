@@ -1,0 +1,16 @@
+@import 'mixins';
+
+
+.item {
+  display: block;
+  position: relative;
+  width: 100%;
+  padding: 24px;
+  background-color: #eee;
+  color: #000;
+  font-size: 14px;
+
+  + .item{
+    margin-top: 24px;
+  }
+}
