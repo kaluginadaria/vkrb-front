@@ -1,6 +1,4 @@
-import ApiConnection, { normalize } from '@ktx/api-connection';
-
-import { methods } from '@ktx/api-connection';
+import ApiConnection, { methods } from '@ktx/api-connection';
 
 import parseToken from 'api/parsers/token';
 
@@ -8,7 +6,7 @@ import parseToken from 'api/parsers/token';
 class OauthToken extends ApiConnection{
     constructor(){
         super({
-            url: 'http://127.0.0.1:8000/api/o.token/',
+            url: '/api/o.token/',
             method: methods.POST
         });
     }

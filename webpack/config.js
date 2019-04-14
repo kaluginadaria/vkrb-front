@@ -6,17 +6,17 @@ const distDir = 'public';
 
 const proxy = {
   '/api': {
-    target: 'http://dev.app.konget.dev.ktsstudio.ru/api',
+    target: 'http://192.168.1.6:8000/api',
     pathRewrite: { '^/api': '' },
     onProxyReq: (proxyReq, req, res) => {
-      proxyReq.setHeader('Host', 'dev.app.konget.dev.ktsstudio.ru');
+      proxyReq.setHeader('Host', '192.168.1.6');
     },
   },
   '/media': {
-    target: 'http://dev.app.konget.dev.ktsstudio.ru/media',
+    target: 'http://192.168.1.6:8000/media',
     pathRewrite: { '^/media': '' },
     onProxyReq: (proxyReq, req, res) => {
-      proxyReq.setHeader('Host', 'dev.app.konget.dev.ktsstudio.ru');
+      proxyReq.setHeader('Host', '192.168.1.6');
     },
   }
 };
