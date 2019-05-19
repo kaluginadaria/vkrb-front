@@ -6,6 +6,8 @@ import history from 'utils/history';
 
 import oAuthStore from 'store/oAuthStore';
 
+import TopBar from './TopBar';
+
 import NewsList from './NewsList';
 
 import styles from './styles.scss';
@@ -27,20 +29,19 @@ class Root extends PureComponent {
     const { isAuthorized } = this.store;
 
     return <Router history={history}>
-      { isAuthorized === true && <Switch>
-        <Route path={'/news'} component={NewsList}/>
-        <Redirect to={'/news'}/>
-      </Switch> }
-      { isAuthorized === false && <>
-        <button onClick={this.store.auth}>Auth</button> }
-      </> }
-      {/*{ isAuthorized === true && 'IsAuth' }*/}
-      {/*{ isAuthorized === false && 'Un auth' }*/}
-      {/*<br/>*/}
-      {/*<br/>*/}
-      {/*{ isAuthorized === false && <button onClick={this.store.auth}>Auth</button> }*/}
-      {/*{ isAuthorized === true && <button onClick={this.store.unAuth}>Un Auth</button> }*/}
-    </Router>;
+      <>
+        <TopBar/>
+        <div className={styles.container}>
+          { isAuthorized === true && <Switch>
+            <Route path={'/news'} component={NewsList}/>
+            <Redirect to={'/news'}/>
+          </Switch> }
+          { isAuthorized === false && <>
+            <button onClick={this.store.auth}>Auth</button> }
+          </> }
+        </div>
+      </>
+    </Router>
   }
 }
 
