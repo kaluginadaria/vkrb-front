@@ -9,6 +9,7 @@ import oAuthStore from 'store/oAuthStore';
 import TopBar from './TopBar';
 
 import NewsList from './NewsList';
+import Structure from './Structure';
 
 import styles from './styles.scss';
 
@@ -34,6 +35,7 @@ class Root extends PureComponent {
         <div className={styles.container}>
           { isAuthorized === true && <Switch>
             <Route path={'/news'} component={NewsList}/>
+            <Route path={'/structure'} component={Structure}/>
             <Redirect to={'/news'}/>
           </Switch> }
           { isAuthorized === false && <>

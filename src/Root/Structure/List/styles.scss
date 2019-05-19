@@ -1,0 +1,24 @@
+@import 'vars';
+@import 'mixins';
+
+
+.root {
+  display: block;
+  position: relative;
+  width: 100%;
+  height: auto;
+  padding: 40px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+
+.title{
+  display: block;
+  position: relative;
+  width: 100%;
+  height: auto;
+  font-size: 25px;
+  font-weight: 700;
+  margin-bottom: 40px;
+}
