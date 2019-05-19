@@ -38,7 +38,7 @@ class Item extends React.PureComponent {
             key={index}
             className={styles.keyword}
           >
-            { text }
+            #{ text }
           </span>
         }) }
       </div>
