@@ -3,6 +3,10 @@ import { PureComponent } from '@ktx/react-relax';
 
 import Store from './Store';
 
+import Item from './Item';
+
+import styles from './styles.scss';
+
 
 class NewsList extends PureComponent{
 
@@ -22,14 +26,12 @@ class NewsList extends PureComponent{
 
     const hasNews = news !== null;
 
-    return <div>
-      { !hasNews && 'loading...' }
+    return <div className={styles.root}>
       { hasNews && news.map(item => {
-        return <div
+        return <Item
           key={item.id}
-        >
-          { item.title }
-        </div>
+          data={item}
+        />
       }) }
     </div>
   }

@@ -1,0 +1,27 @@
+@import 'vars';
+@import 'mixins';
+
+
+.root {
+  display: block;
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+  margin: 0 auto;
+  background-color: $color-gray;
+  padding: 10px;
+  border-radius: 5px;
+
+  + .root{
+    margin-top: 40px;
+  }
+}
+
+
+.button{
+  display: inline-block;
+  position: relative;
+  margin-top: 20px;
+  width: auto;
+}
