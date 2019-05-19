@@ -8,10 +8,11 @@ const Button = React.memo((props) => {
   const {
     children,
     onClick,
+    className,
   } = props;
 
   return <button
-    className={ styles.root }
+    className={ cn(styles.root, className) }
     onClick={onClick}
   >
     { children }

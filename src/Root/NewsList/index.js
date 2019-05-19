@@ -27,10 +27,11 @@ class NewsList extends PureComponent{
     const hasNews = news !== null;
 
     return <div className={styles.root}>
-      { hasNews && news.map(item => {
+      { hasNews && news.ids.map(id=> {
+        const entity = news.entities[id];
         return <Item
-          key={item.id}
-          data={item}
+          key={id}
+          data={entity}
         />
       }) }
     </div>

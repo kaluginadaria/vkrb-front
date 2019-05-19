@@ -1,11 +1,14 @@
+import { normalize } from '@ktx/api-connection';
+
 import AuthorizedConnection from 'api/AuthorizedConnection';
+import newsItem from 'api/parsers/newsItem';
 
 
 class NewsList extends AuthorizedConnection {
     constructor() {
-        super({
-            url: '/api/news.list/',
-        });
+      super({
+        url: '/api/news.list/',
+      });
     }
 
     request = (data) => {
@@ -16,12 +19,15 @@ class NewsList extends AuthorizedConnection {
     };
 
     response = (response) => {
-        return response.data.data.list.map(item => {
-          return {
-            id: item['id'],
-            title: item['title'],
-          }
-        });
+      const [entities, ids] = normalize({
+        array: response.data.data.list,
+        parser: newsItem,
+      });
+
+      return {
+        entities,
+        ids,
+      };
     };
 }
 

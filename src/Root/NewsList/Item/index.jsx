@@ -2,6 +2,8 @@ import React from 'react';
 
 import Button from 'components/Button';
 
+import wmsToDDMonthNameYYYY from 'utils/time/wmsToDDMonthNameYYYY';
+
 import styles from './styles.scss';
 
 
@@ -29,13 +31,27 @@ class Item extends React.PureComponent {
     const { isCollapsed } = this.state;
 
     return <div className={ styles.root }>
-      <div className={styles.header}>
-        <h2 className={styles.title}>{ data.title }</h2>
-        <span className={styles.creationDate}>12.08.2018</span>
+      <h2 className={styles.title}>{ data.title }</h2>
+      <div className={styles.keywords}>
+        { data.keyWords.map((text, index) => {
+          return <span
+            key={index}
+            className={styles.keyword}
+          >
+            { text }
+          </span>
+        }) }
       </div>
-      <img className={styles.cover} src="" alt=""/>
+      <span className={styles.creationDate}>
+        { wmsToDDMonthNameYYYY(data.creationDateWMS) }
+      </span>
+      <img
+        className={styles.cover}
+        src={data.mainPhoto}
+        alt={data.title}
+      />
       <p className={styles.text}>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab ad assumenda esse libero molestias nemo reiciendis sequi veritatis, vitae voluptate? Animi autem dolorum incidunt odit provident quasi quod rem saepe.
+        { isCollapsed ? data.text.substr(0, 300).trim() + '...' : data.text }
       </p>
       <Button
         className={styles.button}
