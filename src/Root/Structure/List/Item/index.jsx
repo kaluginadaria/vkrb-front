@@ -2,9 +2,13 @@ import React from 'react';
 import cn from 'classnames';
 
 import StarIcon from 'components/icons/StarIcon';
-
+import Button from 'components/Button';
 import styles from './styles.scss';
+import history from 'utils/history';
 
+const goToPage = (giId) => () => {
+  history.push(`/structure/page/${giId}`)
+};
 
 const Item = React.memo((props) => {
   const {
@@ -33,6 +37,16 @@ const Item = React.memo((props) => {
     <p className={styles.text}>
       { data.description }
     </p>
+    <div className={styles.controls}>
+      <Button className={styles.control}
+      onClick={goToPage(data.id)}>
+
+        Просмотр
+      </Button>
+      <Button className={styles.control}>
+        Сайт
+      </Button>
+    </div>
   </div>;
 });
 

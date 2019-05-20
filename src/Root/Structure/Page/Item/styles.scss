@@ -1,0 +1,77 @@
+@import 'vars';
+@import 'mixins';
+
+
+.root {
+  display: block;
+  position: relative;
+  width: 100%;
+  max-width: 800px;
+  height: auto;
+  margin: 0 auto;
+  background-color: $color-gray;
+  padding: 20px;
+  border-radius: 5px;
+
+  + .root{
+    margin-top: 40px;
+  }
+}
+
+
+.title{
+  display: block;
+  position: relative;
+  font-size: 20px;
+  font-weight: 500;
+  color: $color-black;
+}
+
+
+.keywords{
+  display: block;
+  position: relative;
+  margin-top: 10px;
+}
+
+
+.keyword{
+  color: $color-gray-dark;
+  margin-right: 5px;
+  font-size: 14px;
+}
+
+
+.creationDate{
+  display: block;
+  position: relative;
+  font-size: 14px;
+  color: $color-black;
+}
+
+
+.cover{
+  display: block;
+  position: relative;
+  height: auto;
+  width: 100%;
+  margin-top: 20px;
+}
+
+
+.text{
+  display: block;
+  position: relative;
+  margin-top: 20px;
+  font-size: 16px;
+  line-height: 22px;
+}
+
+
+.button{
+  display: inline-block;
+  position: relative;
+  margin-top: 20px;
+  width: auto;
+}
+

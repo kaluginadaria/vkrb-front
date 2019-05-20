@@ -17,7 +17,7 @@
   "license": "ISC",
   "dependencies": {
     "@babel/runtime-corejs2": "^7.3.1",
-    "@ktx/api-connection": "^3.0.1",
+    "@ktx/api-connection": "^3.0.2",
     "@ktx/react-relax": "^1.2.0",
     "classnames": "^2.2.5",
     "core-js": "^2.6.4",

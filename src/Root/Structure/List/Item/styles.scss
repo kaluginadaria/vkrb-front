@@ -81,3 +81,19 @@
   height: auto;
   margin-top: 20px;
 }
+
+.controls{
+  display: flex;
+  position: relative;
+  width: 100%;
+  height: auto;
+  margin-top: 20px;
+
+}
+
+.control{
+  display: block;
+  position: relative;
+  margin-right: 20px;
+
+}

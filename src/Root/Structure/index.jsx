@@ -4,6 +4,7 @@ import { Switch, Route, Redirect } from 'react-router-dom';
 import { PureComponent } from '@ktx/react-relax';
 
 import List from './List';
+import Page from "./Page";
 
 
 class Structure extends PureComponent {
@@ -15,7 +16,7 @@ class Structure extends PureComponent {
   render() {
     return <Switch>
       <Route path={'/structure/list'} component={List}/>
-      {/*<Route path={'/structure/page/:id'} component={}/>*/}
+      <Route path={'/structure/page/:id'} component={Page}/>
       <Redirect to={'/structure/list'}/>
     </Switch>
   }
