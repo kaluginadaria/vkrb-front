@@ -1,6 +1,4 @@
-import propTypes from 'prop-types';
 import React from 'react';
-import cn from 'classnames';
 import { PureComponent } from '@ktx/react-relax';
 
 
@@ -25,10 +23,10 @@ class Page extends PureComponent {
 
   render() {
 
-    const item = this.store.data;
+    const data = this.store.data;
     const items = this.store.items;
 
-    if (item === null){
+    if (data === null){
       return null
     }
     if (items ===null){
@@ -36,34 +34,33 @@ class Page extends PureComponent {
     }
 
     return <div className={ styles.root }>
-        <h1 className={styles.title}>{item.title} ({item.acronym})</h1>
-      <div>{item.description}</div>
+      <h1 className={styles.title}>{data.title} ({data.acronym})</h1>
+      <div>{data.description}</div>
 
       <div className={styles.container}>
         <span className={styles.bold}>Декан: </span>
-        {item.ceo}
+        {data.ceo}
       </div>
 
       <div className={styles.container}>
         <span className={styles.bold}>Основные направления: </span>
-        {item.activityCourse}
+        {data.activityCourse}
       </div>
 
       <div className={styles.container}>
         <span className={styles.bold}>История: </span>
-        {item.history}
-      </div>
-      <div className={styles.root}>
-        {  items.ids.map(id=> {
-          const entity = items.entities[id];
-          return <Item
-              key={id}
-              data={entity}
-          />
-        }) }
+        {data.history}
       </div>
 
-
+      <h2 className={styles.title2}>Кафедры</h2>
+      
+      {  items.ids.map(id=> {
+        const entity = items.entities[id];
+        return <Item
+            key={id}
+            data={entity}
+        />
+      }) }
     </div>;
   }
 }

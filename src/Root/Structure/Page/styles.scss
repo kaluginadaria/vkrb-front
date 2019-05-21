@@ -13,7 +13,8 @@
 }
 
 
-.title{
+.title,
+.title2{
   display: block;
   position: relative;
   width: 100%;
@@ -21,6 +22,11 @@
   font-size: 25px;
   font-weight: 700;
   margin-bottom: 40px;
+}
+
+
+.title2{
+  margin-top: 40px;
 }
 
 

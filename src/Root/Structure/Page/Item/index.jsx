@@ -2,11 +2,9 @@ import React from 'react';
 
 import Button from 'components/Button';
 
-import wmsToDDMonthNameYYYY from 'utils/time/wmsToDDMonthNameYYYY';
+import cn from "classnames";
 
 import styles from './styles.scss';
-import cn from "classnames";
-import StarIcon from "../../../../components/icons/StarIcon";
 
 
 const Item = React.memo((props) => {
@@ -24,23 +22,20 @@ const Item = React.memo((props) => {
     <div className={styles.header}>
       <h2 className={styles.title}>{ data.title } ({data.acronym})</h2>
       <div
-          className={cn(
-              styles.star,
-              data.isFav ? styles.active : styles.inactive,
-          )}
-          onClick={onToggleFav}
-      >
-      </div>
+        className={cn(
+          styles.star,
+          data.isFav ? styles.active : styles.inactive,
+        )}
+        onClick={onToggleFav}
+      />
     </div>
     <p className={styles.text}>
       { data.description }
     </p>
-    <div className={styles.controls}>
 
-      <Button className={styles.control}>
-        Сайт
-      </Button>
-    </div>
+    <Button className={styles.control}>
+      Сайт
+    </Button>
   </div>;
 });
 
