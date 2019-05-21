@@ -21,6 +21,10 @@ class Page extends PureComponent {
     this.store.loadSi(id);
   };
 
+  onToggleFav = (id) => () => {
+    this.store.toggleFav(id);
+  };
+
   render() {
 
     const data = this.store.data;
@@ -57,8 +61,9 @@ class Page extends PureComponent {
       {  items.ids.map(id=> {
         const entity = items.entities[id];
         return <Item
-            key={id}
-            data={entity}
+          key={id}
+          data={entity}
+          onToggleFav={this.onToggleFav(id)}
         />
       }) }
     </div>;

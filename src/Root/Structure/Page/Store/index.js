@@ -2,6 +2,8 @@ import Relax, { async } from '@ktx/react-relax';
 
 import GiItemGet from 'api/connections/GIItemGet';
 import ListSiGet from "api/connections/ListSiGet";
+import AddFavouriteSi from 'api/connections/AddFavouriteSi';
+import DeleteFavouriteSi from 'api/connections/DeleteFavouriteSi';
 
 
 class Store extends Relax {
@@ -12,6 +14,9 @@ class Store extends Relax {
     this._apiListSiGet = new ListSiGet();
     this.data = null;
     this.items = null;
+
+    this._apiAddFavouriteSi = new AddFavouriteSi();
+    this._apiDeleteFavouriteSi = new DeleteFavouriteSi();
   };
 
   @async()
@@ -35,6 +40,28 @@ class Store extends Relax {
     }
   };
 
+  @async()
+  toggleFav = async (id) => {
+    const entity = this.items.entities[id];
+
+    if(entity.isFav){
+      const [response] = await this._apiDeleteFavouriteSi.call({
+        id,
+      });
+
+      if(response){
+        entity.isFav = false;
+      }
+    }else{
+      const [response] = await this._apiAddFavouriteSi.call({
+        id,
+      });
+
+      if(response){
+        entity.isFav = true;
+      }
+    }
+  };
 }
 
 

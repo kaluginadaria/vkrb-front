@@ -1,7 +1,7 @@
 import React from 'react';
 
 import Button from 'components/Button';
-
+import StarIcon from 'components/icons/StarIcon';
 import cn from "classnames";
 
 import styles from './styles.scss';
@@ -27,15 +27,19 @@ const Item = React.memo((props) => {
           data.isFav ? styles.active : styles.inactive,
         )}
         onClick={onToggleFav}
-      />
+      >
+        <StarIcon className={styles.starIcon}/>
+      </div>
     </div>
     <p className={styles.text}>
       { data.description }
     </p>
 
-    <Button className={styles.control}>
-      Сайт
-    </Button>
+    <a href={data.link} target="_blank">
+      <Button className={styles.control}>
+        Сайт
+      </Button>
+    </a>
   </div>;
 });
 
