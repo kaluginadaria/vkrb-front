@@ -43,9 +43,12 @@ const Item = React.memo((props) => {
 
         Просмотр
       </Button>
-      <Button className={styles.control}>
-        Сайт
-      </Button>
+      <a target="_blank" href={data.link}>
+        <Button className={styles.control}>
+          Сайт
+        </Button>
+      </a>
+
     </div>
   </div>;
 });

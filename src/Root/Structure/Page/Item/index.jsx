@@ -5,63 +5,44 @@ import Button from 'components/Button';
 import wmsToDDMonthNameYYYY from 'utils/time/wmsToDDMonthNameYYYY';
 
 import styles from './styles.scss';
+import cn from "classnames";
+import StarIcon from "../../../../components/icons/StarIcon";
 
 
-class Item extends React.PureComponent {
+const Item = React.memo((props) => {
+  const {
+    data,
+    onToggleFav,
+  } = props;
 
-  constructor(props) {
-    super(props);
+  return <div className={ styles.root }>
+    <img
+        className={styles.cover}
+        src={data.photoUrl}
+        alt={data.title}
+    />
+    <div className={styles.header}>
+      <h2 className={styles.title}>{ data.title } ({data.acronym})</h2>
+      <div
+          className={cn(
+              styles.star,
+              data.isFav ? styles.active : styles.inactive,
+          )}
+          onClick={onToggleFav}
+      >
+      </div>
+    </div>
+    <p className={styles.text}>
+      { data.description }
+    </p>
+    <div className={styles.controls}>
 
-    this.state = {
-      isCollapsed: true,
-    }
-  }
-
-  toggleCollapsed = () => {
-    this.setState(prevState => {
-      return {
-        ...prevState,
-        isCollapsed: !prevState.isCollapsed,
-      }
-    });
-  };
-
-  render() {
-    const { data } = this.props;
-    const { isCollapsed } = this.state;
-
-    return <div className={ styles.root }>
-      <h2 className={styles.title}>{ data.title }</h2>
-      {/*<div className={styles.keywords}>*/}
-      {/*  { data.keyWords.map((text, index) => {*/}
-      {/*    return <span*/}
-      {/*      key={index}*/}
-      {/*      className={styles.keyword}*/}
-      {/*    >*/}
-      {/*      #{ text }*/}
-      {/*    </span>*/}
-      {/*  }) }*/}
-      {/*</div>*/}
-      {/*<span className={styles.creationDate}>*/}
-      {/*  { wmsToDDMonthNameYYYY(data.creationDateWMS) }*/}
-      {/*</span>*/}
-      {/*<img*/}
-      {/*  className={styles.cover}*/}
-      {/*  src={data.mainPhoto}*/}
-      {/*  alt={data.title}*/}
-      {/*/>*/}
-      {/*<p className={styles.text}>*/}
-      {/*  { isCollapsed ? data.text.substr(0, 300).trim() + '...' : data.text }*/}
-      {/*</p>*/}
-      {/*<Button*/}
-      {/*  className={styles.button}*/}
-      {/*  onClick={this.toggleCollapsed}*/}
-      {/*>*/}
-      {/*  { isCollapsed ? 'Посмотреть' : 'Свернуть' }*/}
-      {/*</Button>*/}
-    </div>;
-  }
-}
+      <Button className={styles.control}>
+        Сайт
+      </Button>
+    </div>
+  </div>;
+});
 
 
 Item.propTypes = {};
