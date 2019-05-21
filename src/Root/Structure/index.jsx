@@ -1,4 +1,3 @@
-import propTypes from 'prop-types';
 import React from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import { PureComponent } from '@ktx/react-relax';

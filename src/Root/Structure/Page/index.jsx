@@ -35,9 +35,6 @@ class Page extends PureComponent {
       return null
     }
 
-
-    console.warn(items);
-
     return <div className={ styles.root }>
         <h1 className={styles.title}>{item.title} ({item.acronym})</h1>
       <div>{item.description}</div>

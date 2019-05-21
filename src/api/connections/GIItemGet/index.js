@@ -12,7 +12,6 @@ class GiItemGet extends AuthorizedConnection {
     }
 
     request = (data) => {
-        console.warn(data);
         return {
             'id': data.id
         }
@@ -20,7 +19,6 @@ class GiItemGet extends AuthorizedConnection {
 
     response = (response) => {
         return  giItem(response.data.data);
-
     };
 }
 
