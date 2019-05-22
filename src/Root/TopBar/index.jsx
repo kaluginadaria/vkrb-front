@@ -2,6 +2,8 @@ import React from 'react';
 
 import { NavLink } from 'react-router-dom';
 
+import User from './User';
+
 import styles from './styles.scss';
 
 
@@ -37,6 +39,8 @@ const TopBar = React.memo((props) => {
     >
       Обучение
     </NavLink>
+
+    <User/>
   </div>;
 });
 

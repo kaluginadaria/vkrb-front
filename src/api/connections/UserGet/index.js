@@ -1,5 +1,7 @@
 import AuthorizedConnection from 'api/AuthorizedConnection';
 
+import parseUser from 'api/parsers/user';
+
 
 class UserGet extends AuthorizedConnection {
     constructor() {
@@ -9,8 +11,7 @@ class UserGet extends AuthorizedConnection {
     }
 
     response = (response) => {
-      console.warn(response);
-      return {};
+      return parseUser(response.data.data);
     };
 }
 
