@@ -1,8 +1,10 @@
 import React from 'react';
 
 import DiscussionsGet from 'api/connections/DiscussionsGet';
+import DiscussionCreate from 'api/connections/DiscussionCreate';
 
 import Button from 'components/Button';
+import TextInput from 'components/TextInput';
 
 import wmsToDDMonthNameYYYY from 'utils/time/wmsToDDMonthNameYYYY';
 
@@ -15,13 +17,20 @@ class Discussions extends React.PureComponent {
     super(props);
 
     this._apiDiscussionsGet = new DiscussionsGet();
+    this._apiDiscussionCreate = new DiscussionCreate();
 
     this.state = {
       discussions: null,
+      newSubject: '',
+      newQuestion: '',
     };
   }
 
-  componentDidMount = async () => {
+  componentDidMount = () => {
+    this.loadDiscussions();
+  };
+
+  loadDiscussions = async () => {
     const [response] = await this._apiDiscussionsGet.call({
       limit: 100,
     });
@@ -33,14 +42,62 @@ class Discussions extends React.PureComponent {
     }
   };
 
+  setSubject = (e) => {
+    this.setState({
+      newSubject: e.target.value,
+    })
+  };
+
+  setQuestion = (e) => {
+    this.setState({
+      newQuestion: e.target.value,
+    })
+  };
+
+  createSubject = async () => {
+    const { newSubject, newQuestion } = this.state;
+
+    const [ response ] = await this._apiDiscussionCreate.call({
+      subject: newSubject,
+      question: newQuestion,
+    });
+
+    if(response) {
+      this.setState({
+        newSubject: '',
+        newQuestion: '',
+      });
+
+      this.loadDiscussions();
+    }
+  };
+
   render() {
-    const { discussions } = this.state;
+    const { discussions, newSubject, newQuestion } = this.state;
 
     if(discussions === null){
       return null;
     }
 
     return <div className={ styles.root }>
+
+      <div className={styles.dis}>
+        <h5 className={styles.title}>Создать обсуждение</h5>
+        <TextInput
+          placeholder={'Введите тему'}
+          value={newSubject}
+          onChange={this.setSubject}
+        />
+        <textarea
+          placeholder={'Введите вопрос'}
+          value={newQuestion}
+          onChange={this.setQuestion}
+          className={styles.textArea}
+        />
+        <Button onClick={this.createSubject}>
+          Создать
+        </Button>
+      </div>
 
       { discussions.list.map(data => {
         return <div

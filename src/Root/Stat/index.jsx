@@ -67,7 +67,7 @@ class Stat extends PureComponent {
           stroke="#343a40"
           binnedData={binnedData}
         />
-        <XAxis label="Теги" labelProps={{ style: { fontSize: '16px' }, y: 30 }}/>
+        <XAxis label="Ключевые слова" labelProps={{ style: { fontSize: '16px' }, y: 40 }}/>
         <YAxis label="Количество новостей" labelProps={{ style: { fontSize: '16px' }, x: -400 }}/>
       </ResponsiveHistogram>
     </div>;

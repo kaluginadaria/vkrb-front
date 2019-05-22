@@ -19,6 +19,10 @@
   background-color: #fff;
   padding: 20px;
   border-radius: 5px;
+
+  & + .dis{
+    margin-top: 40px;
+  }
 }
 
 
@@ -52,4 +56,17 @@
 .button{
   margin-left: auto;
   margin-right: 0;
+}
+
+
+.textArea{
+  margin-top: 20px;
+  background-color: #eee;
+  border: 1px solid #ccc;
+  color: $color-black;
+  padding: 8px;
+  border-radius: 5px;
+  font-size: 14px;
+  width: 100%;
+  display: block;
 }
