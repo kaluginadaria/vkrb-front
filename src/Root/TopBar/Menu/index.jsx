@@ -11,10 +11,10 @@ const Menu = React.memo((props) => {
     className,
   } = props;
 
-  return <div className={ cn(styles.root, className) }>
+  return <span className={ cn(styles.root, className) }>
     <Link to={'/articles'} className={styles.item}>Научные статьи</Link>
     <Link to={'/lit'} className={styles.item}>Рекомендованная литература</Link>
-  </div>;
+  </span>;
 });
 
 

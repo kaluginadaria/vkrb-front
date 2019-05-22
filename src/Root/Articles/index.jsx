@@ -39,14 +39,12 @@ class Articles extends React.PureComponent {
       return null;
     }
 
-    console.warn(articles);
-
     return <div className={ styles.root }>
       <h1 className={styles.title}>Научные статьи</h1>
 
       { articles.list.map(data => {
         return <div
-          id={data.id}
+          key={data.id}
           className={styles.article}
         >
           <img className={styles.cover} src={data.photo.url} alt=""/>

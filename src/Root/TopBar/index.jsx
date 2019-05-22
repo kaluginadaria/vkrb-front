@@ -40,14 +40,10 @@ const TopBar = React.memo((props) => {
     >
       Обсуждения
     </NavLink>
-    <NavLink
-      className={styles.item}
-      activeClassName={styles.active}
-      to={'/education'}
-    >
+    <div className={styles.item}>
       Обучение
       <Menu className={styles.sublink}/>
-    </NavLink>
+    </div>
     <User/>
   </div>;
 });
