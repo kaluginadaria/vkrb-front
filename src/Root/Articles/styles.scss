@@ -1,0 +1,83 @@
+@import 'vars';
+@import 'mixins';
+
+
+.root {
+  display: block;
+  position: relative;
+  width: 100%;
+  height: auto;
+  padding: 40px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+
+.title{
+  display: block;
+  position: relative;
+  width: 100%;
+  height: auto;
+  font-size: 25px;
+  font-weight: 700;
+  margin-bottom: 40px;
+}
+
+
+.article{
+  display: block;
+  position: relative;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+
+  & + .article{
+    margin-top: 40px;
+  }
+}
+
+
+.cover{
+  display: block;
+  position: relative;
+  height: auto;
+  width: 100%;
+}
+
+
+.name{
+  display: block;
+  position: relative;
+  font-size: 20px;
+  font-weight: 500;
+  color: #000;
+  margin-top: 20px;
+}
+
+.info{
+  margin-top: 10px;
+}
+
+
+.infoItem{
+  color: #ccc;
+  font-size: 14px;
+  margin-right: 20px;
+}
+
+
+.text{
+  margin-top: 20px;
+  font-size: 16px;
+}
+
+
+.link{
+  display: inline-block;
+  position: relative;
+  margin-top: 20px;
+  font-size: 16px;
+  color: $color-yellow;
+  cursor: pointer;
+  text-decoration: underline;
+}

@@ -24,4 +24,10 @@
   &.active{
     background-color: $color-white;
   }
+
+  &:hover{
+    .sublink{
+      display: block;
+    }
+  }
 }

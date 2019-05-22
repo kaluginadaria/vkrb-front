@@ -3,6 +3,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 
 import User from './User';
+import Menu from './Menu';
 
 import styles from './styles.scss';
 
@@ -45,8 +46,8 @@ const TopBar = React.memo((props) => {
       to={'/education'}
     >
       Обучение
+      <Menu className={styles.sublink}/>
     </NavLink>
-
     <User/>
   </div>;
 });

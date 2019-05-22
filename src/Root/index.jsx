@@ -12,6 +12,7 @@ import NewsList from './NewsList';
 import Stat from './Stat';
 import Structure from './Structure';
 import Discussions from './Discussions';
+import Articles from './Articles';
 
 import AuthForm from './AuthForm';
 import RegForm from './RegForm';
@@ -44,6 +45,7 @@ class Root extends PureComponent {
               <Route path={'/stat'} component={Stat}/>
               <Route path={'/structure'} component={Structure}/>
               <Route path={'/discussions'} component={Discussions}/>
+              <Route path={'/articles'} component={Articles}/>
               <Redirect to={'/news'}/>
             </Switch>
           </div>
