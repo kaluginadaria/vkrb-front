@@ -1,4 +1,5 @@
 import React from 'react';
+import cn from 'classnames';
 
 import DiscussionsGet from 'api/connections/DiscussionsGet';
 import DiscussionCreate from 'api/connections/DiscussionCreate';
@@ -23,6 +24,8 @@ class Discussions extends React.PureComponent {
       discussions: null,
       newSubject: '',
       newQuestion: '',
+      selectedDiscussion: null,
+      comment: '',
     };
   }
 
@@ -72,16 +75,66 @@ class Discussions extends React.PureComponent {
     }
   };
 
+  selectDiscussion = (id) => () => {
+    this.setState({
+      selectedDiscussion: id,
+    })
+  };
+
+  unSelectDiscussion = () => {
+    this.setState({
+      selectedDiscussion: null,
+    })
+  };
+
+  setComment = (e) => {
+    this.setState({
+      comment: e.target.value,
+    })
+  };
+
+  comment = async () => {
+    const { comment, selectedDiscussion } = this.state;
+
+    const [ response ] = await this._apiDiscussionCreate.call({
+      parent: selectedDiscussion,
+      question: comment,
+      subject: 'zaaaaaaya',
+    });
+
+    if(response){
+      this.setState({
+        comment: '',
+      });
+
+      this.loadDiscussions();
+    }
+  };
+
   render() {
-    const { discussions, newSubject, newQuestion } = this.state;
+    const {
+      discussions,
+      newSubject,
+      newQuestion,
+      selectedDiscussion,
+      comment,
+    } = this.state;
 
     if(discussions === null){
       return null;
     }
 
+    const hasSelected = selectedDiscussion !== null;
+
+    let discussion = null;
+
+    if(hasSelected){
+      discussion = discussions.list.find(discussion => discussion.id === selectedDiscussion);
+    }
+
     return <div className={ styles.root }>
 
-      <div className={styles.dis}>
+      { !hasSelected && <div className={styles.dis}>
         <h5 className={styles.title}>Создать обсуждение</h5>
         <TextInput
           placeholder={'Введите тему'}
@@ -97,9 +150,16 @@ class Discussions extends React.PureComponent {
         <Button onClick={this.createSubject}>
           Создать
         </Button>
-      </div>
+      </div> }
 
       { discussions.list.map(data => {
+
+        if(hasSelected){
+          if(data.id !== selectedDiscussion){
+            return;
+          }
+        }
+
         return <div
           className={styles.dis}
           key={data.id}
@@ -109,12 +169,43 @@ class Discussions extends React.PureComponent {
           <div className={styles.info}>
             <span className={styles.infoItem}>Автор: { data.user.first_name }</span>
             <span className={styles.infoItem}>Создано: {wmsToDDMonthNameYYYY(Number(data.created) * 1000)}</span>
-            <Button className={styles.button}>
-              Просмотр
+            <Button
+              className={styles.button}
+              onClick={!hasSelected ? this.selectDiscussion(data.id) : this.unSelectDiscussion}
+            >
+              { !hasSelected ? 'Просмотр' : 'Закрыть' }
             </Button>
           </div>
         </div>
       }) }
+
+      { hasSelected && <>
+        { discussion.children.map(data => {
+          return <div
+            className={styles.dis}
+            key={data.id}
+          >
+            <p className={cn(styles.text, styles.noIndent)}>{ data.question }</p>
+            <div className={styles.info}>
+              <span className={styles.infoItem}>Автор: { data.user.first_name }</span>
+              <span className={styles.infoItem}>Создано: {wmsToDDMonthNameYYYY(Number(data.created) * 1000)}</span>
+            </div>
+          </div>
+        }) }
+      </> }
+
+      { hasSelected && <div className={styles.dis}>
+        <h5 className={styles.title}>Комментировать</h5>
+        <textarea
+          placeholder={'Введите комментарий'}
+          value={comment}
+          onChange={this.setComment}
+          className={styles.textArea}
+        />
+        <Button onClick={this.comment}>
+          Отправить
+        </Button>
+      </div> }
     </div>;
   }
 }
