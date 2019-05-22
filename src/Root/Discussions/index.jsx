@@ -40,8 +40,6 @@ class Discussions extends React.PureComponent {
       return null;
     }
 
-    console.warn(discussions.list);
-
     return <div className={ styles.root }>
 
       { discussions.list.map(data => {
