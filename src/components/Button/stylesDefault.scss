@@ -1,0 +1,14 @@
+@import 'vars';
+@import 'mixins';
+
+
+.root {
+  display: block;
+  position: relative;
+  width: 100%;
+  margin: 0 auto;
+
+  &:not(:first-child){
+    margin-top: 24px;
+  }
+}

@@ -1,0 +1,12 @@
+@import 'vars';
+@import 'mixins';
+
+
+.root {
+  background-color: #eee;
+  border: 1px solid #ccc;
+  color: $color-black;
+  padding: 8px;
+  border-radius: 5px;
+  font-size: 14px;
+}

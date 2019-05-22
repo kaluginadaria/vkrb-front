@@ -2,6 +2,7 @@ import React from 'react';
 import cn from 'classnames';
 
 import styles from './styles.scss';
+import stylesDefault from './stylesDefault.scss';
 
 
 const Button = React.memo((props) => {
@@ -22,7 +23,9 @@ const Button = React.memo((props) => {
 
 Button.propTypes = {};
 
-Button.defaultProps = {};
+Button.defaultProps = {
+  className: stylesDefault.root,
+};
 
 
 export default Button;

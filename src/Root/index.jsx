@@ -11,6 +11,8 @@ import TopBar from './TopBar';
 import NewsList from './NewsList';
 import Structure from './Structure';
 
+import AuthForm from './AuthForm';
+
 import styles from './styles.scss';
 
 
@@ -31,17 +33,21 @@ class Root extends PureComponent {
 
     return <Router history={history}>
       <>
-        <TopBar/>
-        <div className={styles.container}>
-          { isAuthorized === true && <Switch>
-            <Route path={'/news'} component={NewsList}/>
-            <Route path={'/structure'} component={Structure}/>
-            <Redirect to={'/news'}/>
-          </Switch> }
-          { isAuthorized === false && <>
-            <button onClick={this.store.auth}>Auth</button> }
-          </> }
-        </div>
+        { isAuthorized === true && <>
+          <TopBar/>
+          <div className={styles.container}>
+            <Switch>
+              <Route path={'/news'} component={NewsList}/>
+              <Route path={'/structure'} component={Structure}/>
+              <Redirect to={'/news'}/>
+            </Switch>
+          </div>
+        </> }
+        { isAuthorized === false && <Switch>
+          <Route path={'/auth'} component={AuthForm}/>
+          <Route path={'/reg'} component={AuthForm}/>
+          <Redirect to={'/auth'}/>
+        </Switch> }
       </>
     </Router>
   }

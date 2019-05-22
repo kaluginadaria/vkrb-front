@@ -1,0 +1,39 @@
+@import 'vars';
+@import 'mixins';
+
+
+.root{
+  display: flex;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-color: #eee;
+}
+
+
+.card {
+  display: block;
+  position: relative;
+  margin: auto;
+  padding: 30px;
+  background-color: $color-white;
+  width: 300px;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0,0,0, .05);
+}
+
+
+.title{
+  display: block;
+  position: relative;
+  width: 100%;
+  font-size: 24px;
+  color: $color-black;
+}
+
+
+.link{
+  display: inline-block;
+  position: relative;
+  margin-top: 20px;
+}
