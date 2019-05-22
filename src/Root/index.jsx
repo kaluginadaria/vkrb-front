@@ -12,6 +12,7 @@ import NewsList from './NewsList';
 import Structure from './Structure';
 
 import AuthForm from './AuthForm';
+import RegForm from './RegForm';
 
 import styles from './styles.scss';
 
@@ -45,7 +46,7 @@ class Root extends PureComponent {
         </> }
         { isAuthorized === false && <Switch>
           <Route path={'/auth'} component={AuthForm}/>
-          <Route path={'/reg'} component={AuthForm}/>
+          <Route path={'/reg'} component={RegForm}/>
           <Redirect to={'/auth'}/>
         </Switch> }
       </>
