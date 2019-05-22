@@ -50,10 +50,14 @@ class AuthForm extends PureComponent {
         <TextInput
           onChange={this.setEmail}
           value={email}
+          placeholder={'Email'}
+          type={'email'}
         />
         <TextInput
           onChange={this.setPassword}
           value={password}
+          placeholder={'Пароль'}
+          type={'password'}
         />
         <Button onClick={this.auth}>
           Войти

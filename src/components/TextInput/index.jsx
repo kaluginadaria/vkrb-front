@@ -10,13 +10,16 @@ const TextInput = React.memo((props) => {
     onChange,
     value,
     className,
+    placeholder,
+    type,
   } = props;
 
   return <input
     className={cn(styles.root, className)}
     onChange={onChange}
     value={value}
-    type='text'
+    type={type}
+    placeholder={placeholder}
   />
 });
 
@@ -25,6 +28,7 @@ TextInput.propTypes = {};
 
 TextInput.defaultProps = {
   className: stylesDefault.root,
+  type: 'text',
 };
 
 

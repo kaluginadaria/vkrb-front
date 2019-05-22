@@ -111,18 +111,25 @@ class RegForm extends PureComponent {
         <TextInput
           onChange={this.setName}
           value={name}
+          placeholder={'Имя'}
         />
         <TextInput
           onChange={this.setEmail}
           value={email}
+          placeholder={'Email'}
+          type={'email'}
         />
         <TextInput
           onChange={this.setPassword1}
           value={password1}
+          placeholder={'Пароль'}
+          type={'password'}
         />
         <TextInput
           onChange={this.setPassword2}
           value={password2}
+          placeholder={'Повторите пароль'}
+          type={'password'}
         />
         { errorMessage && <p className={styles.error}>{ errorMessage }</p> }
         <Button onClick={this.reg}>
