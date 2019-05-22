@@ -38,7 +38,7 @@ class AuthForm extends PureComponent {
 
   auth = () => {
     const { email, password } = this.state;
-
+    this.store.auth(email, password);
   };
 
   render() {

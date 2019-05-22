@@ -14,10 +14,12 @@ class OAuthStore extends Relax{
   }
 
   @async()
-  auth = async () => {
+  auth = async (email, password) => {
     const [response, error] = await this._apiOauthToken.call({
-      userName: 'admin@admin.com',
-      password: 'jWWzgyfh',
+      // userName: 'admin@admin.com',
+      userName: email,
+      // password: 'jWWzgyfh',
+      password: password,
       grantType: 'password',
     });
 
