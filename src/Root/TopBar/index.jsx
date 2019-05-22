@@ -21,6 +21,13 @@ const TopBar = React.memo((props) => {
     <NavLink
       className={styles.item}
       activeClassName={styles.active}
+      to={'/stat'}
+    >
+      Статистика
+    </NavLink>
+    <NavLink
+      className={styles.item}
+      activeClassName={styles.active}
       to={'/structure'}
     >
       Структура

@@ -6,7 +6,7 @@ import scssLoader from './scssLoader';
 
 export default ({ isProduction, srcPath }) => ({
   test: /\.s?css$/,
-  exclude: /node_modules/,
+  // exclude: /node_modules/,
   use: [
     extractCssLoader(),
     cssLoader({ isProduction }),

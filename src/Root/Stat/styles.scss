@@ -1,0 +1,10 @@
+@import 'vars';
+@import 'mixins';
+
+
+.root {
+  display: block;
+  position: relative;
+  height: 600px;
+  width: 100%;
+}

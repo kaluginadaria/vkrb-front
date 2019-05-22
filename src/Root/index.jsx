@@ -9,6 +9,7 @@ import oAuthStore from 'store/oAuthStore';
 import TopBar from './TopBar';
 
 import NewsList from './NewsList';
+import Stat from './Stat';
 import Structure from './Structure';
 
 import AuthForm from './AuthForm';
@@ -39,6 +40,7 @@ class Root extends PureComponent {
           <div className={styles.container}>
             <Switch>
               <Route path={'/news'} component={NewsList}/>
+              <Route path={'/stat'} component={Stat}/>
               <Route path={'/structure'} component={Structure}/>
               <Redirect to={'/news'}/>
             </Switch>
