@@ -35,9 +35,9 @@ const TopBar = React.memo((props) => {
     <NavLink
       className={styles.item}
       activeClassName={styles.active}
-      to={'/communication'}
+      to={'/discussions'}
     >
-      Коммуникация
+      Обсуждения
     </NavLink>
     <NavLink
       className={styles.item}
