@@ -1,6 +1,7 @@
 import Relax, { async, sync } from '@ktx/react-relax';
 
 import OauthToken from 'api/connections/OauthToken';
+import UserGet from 'api/connections/UserGet';
 
 
 class OAuthStore extends Relax{
@@ -8,9 +9,11 @@ class OAuthStore extends Relax{
     super();
 
     this._apiOauthToken = new OauthToken();
+    this._apiUserGet = new UserGet();
 
     this.isAuthorized = null;
     this.token = null;
+    this.data = null;
   }
 
   @async()
@@ -27,6 +30,7 @@ class OAuthStore extends Relax{
       this.isAuthorized = true;
       this.token = response.entity.accessToken;
       window.localStorage.setItem('AUTH_TOKEN', this.token);
+      this.loadUser();
     }
   };
 
@@ -44,8 +48,18 @@ class OAuthStore extends Relax{
 
     if(hasToken){
       this.authToken = window.localStorage.getItem('AUTH_TOKEN');
+      this.loadUser();
     }
   };
+
+  @async()
+  loadUser = async () => {
+    const [ response ] = await this._apiUserGet.call();
+
+    if(response){
+      this.data = response;
+    }
+  }
 }
 
 
