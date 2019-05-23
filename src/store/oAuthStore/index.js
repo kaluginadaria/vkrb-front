@@ -38,6 +38,7 @@ class OAuthStore extends Relax{
   unAuth = () => {
     this.isAuthorized = false;
     this.token = null;
+    this.data = null;
     window.localStorage.removeItem('AUTH_TOKEN');
   };
 
@@ -47,7 +48,7 @@ class OAuthStore extends Relax{
     this.isAuthorized = hasToken;
 
     if(hasToken){
-      this.authToken = window.localStorage.getItem('AUTH_TOKEN');
+      this.token = window.localStorage.getItem('AUTH_TOKEN');
       this.loadUser();
     }
   };
@@ -55,7 +56,6 @@ class OAuthStore extends Relax{
   @async()
   loadUser = async () => {
     const [ response ] = await this._apiUserGet.call();
-
     if(response){
       this.data = response;
     }

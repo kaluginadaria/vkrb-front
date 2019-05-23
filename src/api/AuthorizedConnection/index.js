@@ -10,7 +10,7 @@ class AuthorizedConnection extends ApiConnection{
 
   requestHeaders = () => {
     return {
-      'Authorization': 'Bearer ' + oAuthStore.authToken,
+      'Authorization': 'Bearer ' + oAuthStore.token,
     }
   };
 }

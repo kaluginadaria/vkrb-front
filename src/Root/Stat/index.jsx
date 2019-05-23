@@ -57,8 +57,8 @@ class Stat extends PureComponent {
         height={700}
         renderTooltip={({ event, datum, data, color }) => (
           <div>
-            <strong style={{ color }}>{datum.bin0} to {datum.bin1}</strong>
-            <div><strong>count </strong>{datum.count}</div>
+            <strong style={{ color }}>{datum.bin0}ключевое слово: {datum.id}</strong>
+            <div><strong>количество новостей: </strong>{datum.count}</div>
           </div>
         )}
       >

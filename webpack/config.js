@@ -6,17 +6,17 @@ const distDir = 'public';
 
 const proxy = {
   '/api': {
-    target: 'http://192.168.1.6:8000/api',
+    target: 'http://127.0.0.1:8000/api',
     pathRewrite: { '^/api': '' },
     onProxyReq: (proxyReq, req, res) => {
-      proxyReq.setHeader('Host', '192.168.1.6');
+      proxyReq.setHeader('Host', '127.0.0.1');
     },
   },
   '/media': {
-    target: 'http://192.168.1.6:8000/media',
+    target: 'http://127.0.0.1:8000/media',
     pathRewrite: { '^/media': '' },
     onProxyReq: (proxyReq, req, res) => {
-      proxyReq.setHeader('Host', '192.168.1.6');
+      proxyReq.setHeader('Host', '127.0.0.1');
     },
   }
 };

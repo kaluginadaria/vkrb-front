@@ -179,6 +179,19 @@ class Discussions extends React.PureComponent {
         </div>
       }) }
 
+      { hasSelected && <div className={styles.dis}>
+        <h5 className={styles.title}>Комментировать</h5>
+        <textarea
+            placeholder={'Введите комментарий'}
+            value={comment}
+            onChange={this.setComment}
+            className={styles.textArea}
+        />
+        <Button onClick={this.comment}>
+          Отправить
+        </Button>
+      </div> }
+
       { hasSelected && <>
         { discussion.children.map(data => {
           return <div
@@ -194,18 +207,7 @@ class Discussions extends React.PureComponent {
         }) }
       </> }
 
-      { hasSelected && <div className={styles.dis}>
-        <h5 className={styles.title}>Комментировать</h5>
-        <textarea
-          placeholder={'Введите комментарий'}
-          value={comment}
-          onChange={this.setComment}
-          className={styles.textArea}
-        />
-        <Button onClick={this.comment}>
-          Отправить
-        </Button>
-      </div> }
+
     </div>;
   }
 }

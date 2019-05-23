@@ -6,6 +6,7 @@ import Link from 'components/Link';
 import ListArticlesGet from 'api/connections/ListArticlesGet';
 
 import styles from './styles.scss';
+import Button from "../../components/Button";
 
 
 class Articles extends React.PureComponent {
@@ -63,7 +64,9 @@ class Articles extends React.PureComponent {
           </p>
 
           <a href={data.attachment.url} target="_blank" className={styles.link}>
-            Читать
+            <Button className={styles.control}>
+              Читать
+            </Button>
           </a>
         </div>
       }) }
